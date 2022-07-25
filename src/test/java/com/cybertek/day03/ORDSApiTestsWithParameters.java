@@ -76,6 +76,9 @@ public class ORDSApiTestsWithParameters {
             assertEquals("IT_PROG",eachJobID);
         }
 
+        // print name of each IT_PROG
+
+
     }
 
 
