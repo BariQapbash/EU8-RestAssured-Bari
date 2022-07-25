@@ -35,6 +35,10 @@ public class ORDSApiWithJsonFile extends HRTestBase {
         List<String> allCountryId = jsonPath.getList("items.country_id");
         System.out.println("allCountryId = " + allCountryId);
 
+        // get all country names where their region id is equal to 2
+        List<Integer> countryNameWithId2 = jsonPath.getList("items.findAll {it.region_id==2}.country_name");
+        System.out.println("countryNameWithId2 = " + countryNameWithId2);
+
 
     }
 }
