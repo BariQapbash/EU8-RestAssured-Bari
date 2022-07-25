@@ -78,6 +78,12 @@ public class ORDSApiTestsWithParameters {
 
         // print name of each IT_PROG
 
+        List<String> allProgsName = response.path("items.findAll{it.job_id==\"IT_PROG\"} .first_name");
+
+        for (String eachProg : allProgsName) {
+            System.out.println("eachProg = " + eachProg);
+        }
+
 
     }
 
