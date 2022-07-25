@@ -1,4 +1,5 @@
 package com.cybertek.day02;
+import com.cybertek.utilities.HRTestBase;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -10,14 +11,10 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class HrGetRequest {
+public class HrGetRequest extends HRTestBase {
 
     //BeforeAll is a annotation equals to @BeforeClass in testNg, we use with static method name
-    @BeforeAll
-    public static void init(){
-        //save baseurl inside this variable so that we dont need to type each http method.
-        baseURI = "http://44.202.119.26:1000/ords/hr";
-    }
+
 
     @DisplayName("GET request to /regions")
     @Test
