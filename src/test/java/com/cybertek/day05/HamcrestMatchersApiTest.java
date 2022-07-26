@@ -50,33 +50,51 @@ public class HamcrestMatchersApiTest {
     @Test
     public void teacherData(){
 
+
         given()
                 .accept(ContentType.JSON)
-
                 .and()
-                .pathParam("id",10423)
+                .pathParam("id",21887)
                 .and()
 
                 .when()
-                .get("http://api.cybertektraining.com/teachers")
+                .get("http://api.cybertektraining.com/teacher/{id}")
                 .then()
                 .statusCode(200)
                 .and()
                 .contentType("application/json;charset=UTF-8")
                 .and()
-                .header("Content-Length",is("236"))
+                .header("Content-Length",is("275"))
                 .and()
                 .header("Date",notNullValue())
                 .and().assertThat()
-                .body("teachers[0].firstName",is("Alexander"))
-                .body("teachers[0].lastName",is("Syrup"))
-                .body("teachers[0].gender",equalTo("male"));
+                .body("teachers[0].firstName",is("Leonel"))
+                .body("teachers[0].lastName",is("Messi"))
+                .body("teachers[0].gender",equalTo("Male"));
 
+    }
+
+
+
+    @DisplayName("GET request to teacher/all and chaining")
+    @Test
+    public void teachersTest() {
+
+        //verify Alexander,Darleen,Sean inside the all teachers
+        given()
+                .accept(ContentType.JSON)
+                .when()
+                .get("http://api.cybertektraining.com/teacher/all")
+                .then()
+                .statusCode(200)
+                .and()
+                .body("teachers.firstName",hasItems("Janna","Dean","Leonel"));
 
 
 
 
     }
+
 
 
 }
