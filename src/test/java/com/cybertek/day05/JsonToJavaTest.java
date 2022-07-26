@@ -39,8 +39,16 @@ public class JsonToJavaTest extends SpartanTestBase{
     @Test
     public void getAllSpartans(){
 
+        Response response = get("/api/spartans/").then().statusCode(200).extract().response();
 
+        // we need to convert json to Java which is deserialize
 
+        List<Map<String,Object>> jsonList = response.as(List.class);
+
+        System.out.println("jsonList.get(1).get(\"name\") = " + jsonList.get(1).get("name"));
+
+        Map<String,Object> spartans3 = jsonList.get(2);
+        System.out.println("spartans3 = " + spartans3);
 
     }
 
