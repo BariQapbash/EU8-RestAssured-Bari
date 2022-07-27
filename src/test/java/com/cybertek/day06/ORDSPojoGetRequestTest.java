@@ -3,6 +3,7 @@ package com.cybertek.day06;
 import com.cybertek.pojo.Employee;
 import com.cybertek.pojo.Link;
 import com.cybertek.pojo.Region;
+import com.cybertek.pojo.Regions;
 import com.cybertek.utilities.HRTestBase;
 import io.restassured.path.json.JsonPath;
 import org.junit.jupiter.api.DisplayName;
@@ -51,6 +52,42 @@ public class ORDSPojoGetRequestTest extends HRTestBase {
         try to use pojo as much as possible
         ignore non used fields
      */
+
+
+    @DisplayName("GET request to region only some fields test")
+    @Test
+    public void regionProjectTest(){
+        //send a get request and save everthing inside the regions object
+        //since we prepare pojo also for the all properties we dont need to use any path so as() method is enough
+        Regions regions = get("/regions").then().statusCode(200).extract().response().as(Regions.class);
+
+        // verify count is 4
+        assertThat(regions.getCount(),is(4));
+
+        //create empty list to store values
+        List<String> regionNames = new ArrayList<>();
+        List<Integer> regionIds = new ArrayList<>();
+
+        //get list of regions out of regions object
+        List<Region> items = regions.getItems();
+
+        //loop through each of the region, save their ids and names to empty list that we prepare
+        for (Region region : items) {
+            regionIds.add(region.getRId());
+            regionNames.add(region.getRegion_name());
+        }
+        System.out.println("regionIds = " + regionIds);
+        System.out.println("regionNames = " + regionNames);
+        //prepare expected result
+        List<Integer> expectedRegionIds = Arrays.asList(1,2,3,4);
+        List<String> expectedRegionNames = Arrays.asList("Europe", "Americas", "Asia", "Middle East and Africa");
+
+        //compare two result
+        assertThat(regionIds,is(expectedRegionIds));
+        assertThat(regionNames,is(equalTo(expectedRegionNames)));
+
+
+    }
 
 
 }
