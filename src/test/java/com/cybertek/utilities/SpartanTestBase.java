@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeAll;
 
 import static io.restassured.RestAssured.baseURI;
 
+
+
 public class SpartanTestBase {
 
     @BeforeAll
