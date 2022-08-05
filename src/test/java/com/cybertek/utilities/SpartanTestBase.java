@@ -7,7 +7,7 @@ import static io.restassured.RestAssured.baseURI;
 
 
 
-public class SpartanTestBase {
+public abstract class SpartanTestBase {
 
     @BeforeAll
     public static void init() {
