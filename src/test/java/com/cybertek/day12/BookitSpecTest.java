@@ -17,7 +17,7 @@ public class BookitSpecTest extends BookitTestBase {
         //send a get request to /api/users/me endpoint as a teacher
         //verify status code and content type
         given()
-                .spec(teacherReqSpec)
+                .spec(studentLeaderReqSpec)
                 .when()
                 .get("/api/users/me")
                 .then()
@@ -34,7 +34,7 @@ public class BookitSpecTest extends BookitTestBase {
         //verify status code and content type
 
         given()
-                .spec(userReqSpec("student-member"))
+                .spec(userReqSpec("student-leader"))
                 .when()
                 .get("/api/users/me")
                 .then()
