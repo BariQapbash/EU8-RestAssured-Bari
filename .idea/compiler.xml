@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="EU8-RestAssured-Bari" />
+        <module name="B22-RestAssured" />
       </profile>
     </annotationProcessing>
   </component>
